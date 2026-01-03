@@ -3,7 +3,7 @@ import { Newsletter } from "@/components/Newsletter";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Heart, Target, Eye, Sparkles, ArrowRight } from "lucide-react";
-import founderImg from "@/assets/founder.jpg";
+import founderImg from "@/assets/founder.webp";
 
 const values = [
   {

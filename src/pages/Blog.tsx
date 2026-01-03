@@ -2,6 +2,9 @@ import { Layout } from "@/components/layout/Layout";
 import { Newsletter } from "@/components/Newsletter";
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock } from "lucide-react";
+import blog1 from "@/assets/blog1.webp";
+import blog2 from "@/assets/blog2.webp";
+import blog3 from "@/assets/blog3.webp";
 
 const blogPosts = [
   {
@@ -11,7 +14,7 @@ const blogPosts = [
     category: "Mindfulness",
     readTime: "7 min read",
     date: "Dec 1, 2024",
-    color: "bg-sage/30",
+    image: blog1,
   },
   {
     id: 2,
@@ -20,7 +23,7 @@ const blogPosts = [
     category: "Wellness",
     readTime: "5 min read",
     date: "Nov 25, 2024",
-    color: "bg-lavender/30",
+    image: blog2,
   },
   {
     id: 3,
@@ -29,7 +32,7 @@ const blogPosts = [
     category: "Cognitive Science",
     readTime: "8 min read",
     date: "Nov 18, 2024",
-    color: "bg-gold/20",
+    image: blog3,
   },
   {
     id: 4,
@@ -38,7 +41,7 @@ const blogPosts = [
     category: "Self-Care",
     readTime: "6 min read",
     date: "Nov 10, 2024",
-    color: "bg-sage/30",
+    image: blog1,
   },
   {
     id: 5,
@@ -47,7 +50,7 @@ const blogPosts = [
     category: "Meditation",
     readTime: "5 min read",
     date: "Nov 3, 2024",
-    color: "bg-lavender/30",
+    image: blog2,
   },
   {
     id: 6,
@@ -56,7 +59,7 @@ const blogPosts = [
     category: "Lifestyle",
     readTime: "6 min read",
     date: "Oct 27, 2024",
-    color: "bg-gold/20",
+    image: blog3,
   },
 ];
 
@@ -87,10 +90,12 @@ const Blog = () => {
                 key={post.id}
                 className="group rounded-3xl bg-gradient-card border border-border/50 shadow-soft hover:shadow-card transition-all duration-300 overflow-hidden"
               >
-                <div className={`h-48 ${post.color} flex items-center justify-center`}>
-                  <div className="w-20 h-20 rounded-full bg-background/50 flex items-center justify-center">
-                    <span className="font-heading text-3xl text-forest">✦</span>
-                  </div>
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-4 mb-3">
