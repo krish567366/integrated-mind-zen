@@ -34,13 +34,13 @@ const About = () => {
       {/* Hero Section */}
       <section className="py-24 bg-gradient-to-br from-background via-sage/10 to-lavender/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-heading text-4xl md:text-5xl font-semibold text-foreground mb-6 animate-fade-in-up">
-              Where Science Meets Soul
+              Hi! I'm Vibhu.
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed animate-fade-in-up delay-200">
-              Integrated Mind was born from a vision to create a sanctuary where modern psychology 
-              and ancient contemplative wisdom unite, offering a path to genuine healing and self-discovery.
+              It is my desire for you to experience wholeness and create peace inside and outside. 
+              I invite you to release whatever is blocking you and return to your aware, peaceful and integrated nature.
             </p>
           </div>
         </div>
@@ -49,39 +49,21 @@ const About = () => {
       {/* Philosophy Section */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6">
-              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">
-                Our Philosophy
-              </h2>
-              <p className="text-muted-foreground leading-relaxed">
-                We believe that true wellness cannot be compartmentalized. The mind, body, and spirit 
-                are intricately connected, and lasting transformation occurs when we address all dimensions 
-                of our being with equal care and attention.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Our integrative approach combines evidence-based cognitive behavioral techniques, 
-                mindfulness-based stress reduction, somatic awareness practices, and contemplative 
-                traditions from around the world. This unique synthesis creates a comprehensive 
-                framework for personal growth that honors both scientific rigor and spiritual depth.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Whether you're seeking relief from anxiety, greater clarity in your life's purpose, 
-                or simply a deeper sense of peace, we meet you where you are and walk alongside you 
-                on your journey home to yourself.
-              </p>
-            </div>
-            <div className="relative">
-              <div className="w-full aspect-square rounded-3xl bg-gradient-to-br from-sage/30 to-lavender/20 p-8 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="font-heading text-6xl text-forest mb-4">∞</div>
-                  <p className="font-heading text-xl text-forest italic">
-                    "Healing is the return to wholeness"
-                  </p>
-                </div>
-              </div>
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 rounded-full bg-gold/20 organic-blob -z-10" />
-            </div>
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Whether you're struggling in relationships or seeking emotional balance, spiritual growth, happiness and inner peace. 
+              It is possible, and I'm so glad you're here!
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              I founded Integrated Mind to share the science of inner transformation through a unique fusion of Eastern psychotherapy, 
+              self-awareness techniques, and emotional healing practices. My journey is grounded in an extensive background in art, 
+              philosophy, brain science, metacognitive behavior, and sacred practices for inner awakening.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Over the past two decades, I have practiced and trained in various therapeutic techniques and meditative therapies, 
+              which has allowed me to respond to a wide range of challenges from a holistic perspective. I have found meditation 
+              to be one of the most profound ways to live a joyful and fulfilled life.
+            </p>
           </div>
         </div>
       </section>
@@ -120,13 +102,13 @@ const About = () => {
       </section>
 
       {/* Founder Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img
                 src={founderImg}
-                alt="Dr. Elena Rivers - Founder of Integrated Mind"
+                alt="Vibhu - Founder of Integrated Mind"
                 className="w-full max-w-md mx-auto rounded-3xl shadow-card object-cover"
               />
               <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-lavender/30 organic-blob-2 -z-10" />
@@ -134,29 +116,60 @@ const About = () => {
 
             <div className="space-y-6">
               <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">
-                Meet Dr. Elena Rivers
+                My Journey of Healing & Transformation
               </h2>
-              <p className="text-gold font-medium">Founder & Lead Practitioner</p>
               <p className="text-muted-foreground leading-relaxed">
-                Dr. Elena Rivers brings over 15 years of experience in clinical psychology, 
-                mindfulness-based therapy, and contemplative studies. Her journey began with 
-                her own healing process, leading her to explore the intersection of cognitive 
-                science and spiritual wisdom.
+                By letting go of the chaos of the mind and reconnecting with the essential self, we can experience true peace and healing. 
+                I have had the privilege of supporting individuals through personal crises and life challenges, guiding them toward clarity, 
+                healing, and a deeper sense of well-being.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Trained at Harvard Medical School in mind-body medicine and certified in 
-                multiple meditation traditions, Dr. Rivers has dedicated her career to making 
-                transformative healing accessible to all who seek it. Her warm, intuitive 
-                approach creates a safe space for deep exploration and genuine change.
+                If you find yourself dissatisfied with where you are in life, know that integrated therapy can help uncover and heal 
+                negative thought patterns, unconscious beliefs, and unfulfilled desires that may be standing in the way of your happiness.
               </p>
+              <blockquote className="text-foreground italic border-l-4 border-sage pl-6 py-4 my-6 bg-background/50 rounded-r-lg">
+                "Although the world is full of suffering, it is also full of the overcoming of it." 
+                <br /><span className="text-sm text-muted-foreground mt-2 block">— Helen Keller</span>
+              </blockquote>
               <p className="text-muted-foreground leading-relaxed">
-                "My greatest joy is witnessing the moment when someone reconnects with their 
-                inherent wholeness. That spark of recognition—that's what this work is all about."
+                I have come to believe that pain and suffering serve as invitations to awaken, release illusions, and open the door to freedom. 
+                In these moments of struggle, we catch a glimpse of the truth that can guide us toward our authentic self.
               </p>
+              <blockquote className="text-foreground italic border-l-4 border-lavender pl-6 py-4 my-6 bg-background/50 rounded-r-lg">
+                "Your pain is the breaking of the shell that encloses your understanding."
+                <br /><span className="text-sm text-muted-foreground mt-2 block">— Kahlil Gibran</span>
+              </blockquote>
               <Button variant="sage" size="lg" asChild>
                 <Link to="/contact" className="gap-2">
-                  Work with Dr. Rivers
+                  Join Me on This Journey
                   <ArrowRight size={18} />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Invitation Section */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground">
+              Join Me on a Journey of Transformation
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              The journey of self-discovery and healing is a gentle pilgrimage that begins with a single step. 
+              If you feel ready to release the burdens that weigh on you, explore the deeper aspects of your being, 
+              and embrace meaningful transformation, I welcome you to join me on this path.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Together, we can uncover the way to healing, peace, and a more fulfilled life.
+            </p>
+            <div className="pt-6">
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/contact" className="gap-2">
+                  Begin Your Journey Today
+                  <ArrowRight size={20} />
                 </Link>
               </Button>
             </div>
