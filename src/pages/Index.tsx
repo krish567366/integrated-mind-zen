@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Newsletter } from "@/components/Newsletter";
 import { Brain, Heart, Leaf, Sparkles, Star, Users, ArrowRight } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import image1 from "@/assets/image 1.webp";
+import image2 from "@/assets/image2.webp";
+import image3 from "@/assets/image3.webp";
 
 const features = [
   {
@@ -33,16 +36,19 @@ const testimonials = [
     quote: "Integrated Mind transformed my relationship with stress. I now approach challenges with calm clarity.",
     author: "Sarah M.",
     role: "Creative Director",
+    image: image1,
   },
   {
     quote: "The meditation sessions opened a door to inner peace I didn't know existed. Truly life-changing.",
     author: "James K.",
     role: "Entrepreneur",
+    image: image2,
   },
   {
     quote: "Finally, a holistic approach that honors both science and spirituality. This is real healing.",
     author: "Priya S.",
     role: "Healthcare Professional",
+    image: image3,
   },
 ];
 

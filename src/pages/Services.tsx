@@ -3,6 +3,10 @@ import { Newsletter } from "@/components/Newsletter";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Brain, Heart, Leaf, Sun, Users, ArrowRight, Check } from "lucide-react";
+import image1 from "@/assets/image 1.webp";
+import image2 from "@/assets/image2.webp";
+import image3 from "@/assets/image3.webp";
+import image4 from "@/assets/image4.webp";
 
 const services = [
   {
@@ -16,6 +20,7 @@ const services = [
       "Personalized strategies for lasting change",
     ],
     color: "bg-sage/30",
+    image: image1,
   },
   {
     icon: Sun,
@@ -28,6 +33,7 @@ const services = [
       "Tools for establishing a daily practice",
     ],
     color: "bg-gold/20",
+    image: image2,
   },
   {
     icon: Leaf,
@@ -40,6 +46,7 @@ const services = [
       "Creating mindful routines and habits",
     ],
     color: "bg-lavender/30",
+    image: image3,
   },
   {
     icon: Heart,
@@ -52,6 +59,7 @@ const services = [
       "Strengthen emotional boundaries",
     ],
     color: "bg-sage/30",
+    image: image4,
   },
   {
     icon: Users,
@@ -64,6 +72,7 @@ const services = [
       "Ongoing support and guidance",
     ],
     color: "bg-gold/20",
+    image: image1,
   },
 ];
 
@@ -121,10 +130,14 @@ const Services = () => {
                     </Link>
                   </Button>
                 </div>
-                <div className={`${service.color} rounded-3xl p-12 flex items-center justify-center ${
+                <div className={`${service.color} rounded-3xl overflow-hidden ${
                   index % 2 === 1 ? "lg:col-start-1" : ""
                 }`}>
-                  <service.icon className="w-32 h-32 text-forest/30" />
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-80 object-cover hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               </div>
             ))}
