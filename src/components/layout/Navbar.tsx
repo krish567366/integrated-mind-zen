@@ -1,102 +1,93 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { name: "Home", path: "/" },
+const navLeft = [
   { name: "About", path: "/about" },
   { name: "Services", path: "/services" },
   { name: "Workshops", path: "/workshops" },
+];
+
+const navRight = [
   { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
 ];
 
-export const Navbar = () => {
+export const Navbar = ({ overlay = false }: { overlay?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-sage flex items-center justify-center">
-              <span className="font-heading text-forest text-xl font-bold">IM</span>
-            </div>
-            <span className="font-heading text-xl font-semibold text-foreground">
-              Integrated Mind
-            </span>
-          </Link>
+  const linkClass = (path: string) =>
+    cn(
+      "font-body text-[0.6875rem] tracking-[0.18em] uppercase transition-opacity duration-500 hover:opacity-60",
+      location.pathname === path ? "text-foreground" : "text-foreground/55",
+    );
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={cn(
-                  "text-sm font-medium transition-colors duration-300 hover:text-primary relative",
-                  location.pathname === link.path
-                    ? "text-primary after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-gold after:rounded-full"
-                    : "text-muted-foreground"
-                )}
-              >
+  return (
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 border-b border-foreground/[0.06]",
+        overlay ? "bg-background/80 backdrop-blur-[2px]" : "bg-background",
+      )}
+    >
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+        <div className="relative flex h-[4.5rem] md:h-20 items-center justify-between">
+          {/* Mobile menu */}
+          <button
+            type="button"
+            className="md:hidden p-1 text-foreground/70"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+          >
+            {isOpen ? <X size={20} strokeWidth={1.25} /> : <Menu size={20} strokeWidth={1.25} />}
+          </button>
+
+          {/* Desktop left nav */}
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10 flex-1">
+            {navLeft.map((link) => (
+              <Link key={link.path} to={link.path} className={linkClass(link.path)}>
                 {link.name}
               </Link>
             ))}
-          </div>
+          </nav>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Button variant="hero" size="lg" asChild>
-              <Link to="/contact">Book a Session</Link>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+          {/* Center logo — absolutely centered */}
+          <Link
+            to="/"
+            className="absolute left-1/2 -translate-x-1/2 font-heading text-[1.05rem] md:text-lg font-normal text-foreground whitespace-nowrap transition-opacity duration-500 hover:opacity-60"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            Integrated Mind
+          </Link>
+
+          {/* Desktop right nav */}
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10 flex-1 justify-end">
+            {navRight.map((link) => (
+              <Link key={link.path} to={link.path} className={linkClass(link.path)}>
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="md:hidden w-5" aria-hidden="true" />
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "lg:hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border transition-all duration-300 overflow-hidden",
-          isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
-        )}
-      >
-        <div className="container mx-auto px-4 py-4 space-y-4">
-          {navLinks.map((link) => (
+      {/* Mobile fullscreen menu */}
+      {isOpen && (
+        <div className="md:hidden fixed inset-0 top-[4.5rem] bg-background z-40 flex flex-col items-center justify-center gap-10">
+          {[...navLeft, ...navRight].map((link) => (
             <Link
               key={link.path}
               to={link.path}
               onClick={() => setIsOpen(false)}
-              className={cn(
-                "block py-2 text-base font-medium transition-colors duration-300",
-                location.pathname === link.path
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-primary"
-              )}
+              className="font-heading text-2xl font-normal text-foreground/80 hover:opacity-60 transition-opacity"
             >
               {link.name}
             </Link>
           ))}
-          <Button variant="hero" className="w-full mt-4" asChild>
-            <Link to="/contact" onClick={() => setIsOpen(false)}>
-              Book a Session
-            </Link>
-          </Button>
         </div>
-      </div>
-    </nav>
+      )}
+    </header>
   );
 };

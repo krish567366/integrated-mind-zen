@@ -1,98 +1,80 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
+import { Instagram } from "lucide-react";
+import { EditorialH2, EditorialSection, InsetWide } from "@/components/editorial/Editorial";
 
 export const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 rounded-full bg-sage flex items-center justify-center">
-                <span className="font-heading text-forest text-xl font-bold">IM</span>
-              </div>
-              <span className="font-heading text-xl font-semibold">Integrated Mind</span>
-            </div>
-            <p className="text-primary-foreground/80 text-sm leading-relaxed">
-              Guiding you towards cognitive clarity, emotional healing, and spiritual transformation through mindfulness and holistic wellness practices.
+    <footer className="border-t border-foreground/[0.06]">
+      <EditorialSection tight>
+        <InsetWide align="center" className="space-y-8">
+          <EditorialH2 center>
+            Reimagine. Reclaim. Rebirth. Unleash <em>Your</em> Light.
+          </EditorialH2>
+          <p className="font-body text-[clamp(1rem,1.6vw,1.125rem)] font-light leading-[1.85] text-foreground/80 text-center max-w-2xl mx-auto">
+            For the past two decades, Vibhu has been supporting awakening seekers, heart-led leaders,
+            and modern-day mystics come home to the unique expression of who they are. To get started,
+            explore the programs and offers.
+          </p>
+        </InsetWide>
+      </EditorialSection>
+
+      <div className="mx-auto max-w-[1040px] px-6 md:px-12 lg:px-16 pb-16 md:pb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-8 border-t border-foreground/[0.06]">
+          <div>
+            <p className="font-body text-[0.6875rem] tracking-[0.18em] uppercase text-foreground mb-5">
+              Work With Vibhu
             </p>
-            <div className="flex space-x-4 pt-2">
-              <a href="#" className="text-primary-foreground/70 hover:text-gold transition-colors duration-300">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="text-primary-foreground/70 hover:text-gold transition-colors duration-300">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-primary-foreground/70 hover:text-gold transition-colors duration-300">
-                <Youtube size={20} />
-              </a>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-heading text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-3">
-              {["About Us", "Services", "Workshops", "Blog", "Contact"].map((item) => (
-                <li key={item}>
+              {[
+                { label: "Home", path: "/" },
+                { label: "About", path: "/about" },
+                { label: "All Services", path: "/services" },
+                { label: "Workshops", path: "/workshops" },
+              ].map((item) => (
+                <li key={item.path}>
                   <Link
-                    to={`/${item.toLowerCase().replace(" ", "-")}`}
-                    className="text-primary-foreground/80 hover:text-gold transition-colors duration-300 text-sm"
+                    to={item.path}
+                    className="font-body text-sm text-foreground/65 font-light hover:opacity-60 transition-opacity duration-500"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Services */}
           <div>
-            <h4 className="font-heading text-lg font-semibold mb-4">Our Services</h4>
+            <p className="font-body text-[0.6875rem] tracking-[0.18em] uppercase text-foreground mb-5">
+              Connect & Explore
+            </p>
             <ul className="space-y-3">
-              {["Cognitive Thinking", "Meditation Therapy", "Mindfulness Coaching", "Emotional Resilience", "1:1 Consultation"].map((item) => (
-                <li key={item}>
+              {[
+                { label: "Blog", path: "/blog" },
+                { label: "Meditation", path: "/meditate/why-meditation" },
+                { label: "Contact", path: "/contact" },
+              ].map((item) => (
+                <li key={item.path}>
                   <Link
-                    to="/services"
-                    className="text-primary-foreground/80 hover:text-gold transition-colors duration-300 text-sm"
+                    to={item.path}
+                    className="font-body text-sm text-foreground/65 font-light hover:opacity-60 transition-opacity duration-500"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-heading text-lg font-semibold mb-4">Contact Us</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-3">
-                <MapPin size={18} className="text-gold mt-0.5 flex-shrink-0" />
-                <span className="text-primary-foreground/80 text-sm">
-                  123 Serenity Lane, Mindful City, MC 12345
-                </span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Phone size={18} className="text-gold flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-primary-foreground/80 hover:text-gold transition-colors duration-300 text-sm">
-                  +1 (234) 567-890
-                </a>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail size={18} className="text-gold flex-shrink-0" />
-                <a href="mailto:hello@integratedmind.com" className="text-primary-foreground/80 hover:text-gold transition-colors duration-300 text-sm">
-                  hello@integratedmind.com
-                </a>
-              </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center">
-          <p className="text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} Integrated Mind. All rights reserved. Crafted with intention and care.
+        <div className="mt-14 pt-8 border-t border-foreground/[0.06] text-center space-y-3">
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 font-body text-sm text-foreground/50 hover:opacity-60 transition-opacity duration-500"
+          >
+            <Instagram size={14} strokeWidth={1.25} />
+            Follow <em>@IntegratedMind</em> on Instagram
+          </a>
+          <p className="font-body text-xs text-foreground/40 font-light">
+            © {new Date().getFullYear()} Integrated Mind. All Rights Reserved.
           </p>
         </div>
       </div>

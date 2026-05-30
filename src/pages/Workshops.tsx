@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, MapPin, Users, Clock, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const workshops = [
   {
@@ -71,13 +72,13 @@ const Workshops = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-br from-background via-lavender/10 to-sage/10">
+      <section className="py-32 pt-40 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-heading text-4xl md:text-5xl font-semibold text-foreground mb-6 animate-fade-in-up">
+            <h1 className="font-heading text-4xl md:text-5xl font-light tracking-wide text-foreground mb-6 animate-reveal">
               Workshops & Retreats
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed animate-fade-in-up delay-200">
+            <p className="text-lg text-muted-foreground leading-relaxed animate-reveal delay-reveal-200">
               Immersive experiences designed to deepen your practice, expand your awareness, 
               and connect with a community of like-minded seekers.
             </p>
@@ -85,24 +86,35 @@ const Workshops = () => {
         </div>
       </section>
 
+      {/* Link to full Pricing & Schedule page */}
+      <section className="py-8 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Button variant="outline" asChild>
+            <Link to="/workshops/pricing-schedule" className="gap-2">
+              View Full Pricing & Schedule
+            </Link>
+          </Button>
+        </div>
+      </section>
+
       {/* Workshops Grid */}
-      <section className="py-24 bg-background">
+      <section className="py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
             {workshops.map((workshop) => (
               <div
                 key={workshop.title}
-                className="p-8 rounded-3xl bg-gradient-card border border-border/50 shadow-soft hover:shadow-card transition-all duration-300 group"
+                className="p-8 rounded-3xl bg-secondary/30 border border-foreground/10 transition-opacity duration-500 group"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <span className="px-3 py-1 rounded-full bg-gold/20 text-forest text-xs font-medium">
+                  <span className="px-3 py-1 rounded-full bg-secondary/50 text-primary text-xs font-medium">
                     {workshop.tag}
                   </span>
-                  <span className="font-heading text-2xl font-semibold text-primary">
+                  <span className="font-heading text-2xl font-normal text-primary">
                     {workshop.price}
                   </span>
                 </div>
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
+                <h3 className="font-heading text-xl font-normal text-foreground mb-3">
                   {workshop.title}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-6">
@@ -110,19 +122,19 @@ const Workshops = () => {
                 </p>
                 <div className="space-y-2 mb-6">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar className="w-4 h-4 text-sage" />
+                    <Calendar className="w-4 h-4 text-primary" />
                     {workshop.date}
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Clock className="w-4 h-4 text-sage" />
+                    <Clock className="w-4 h-4 text-primary" />
                     {workshop.time}
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <MapPin className="w-4 h-4 text-sage" />
+                    <MapPin className="w-4 h-4 text-primary" />
                     {workshop.location}
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Users className="w-4 h-4 text-sage" />
+                    <Users className="w-4 h-4 text-primary" />
                     {workshop.spots} spots available
                   </div>
                 </div>
@@ -139,11 +151,11 @@ const Workshops = () => {
       </section>
 
       {/* Registration Form */}
-      <section id="register" className="py-24 bg-muted/50">
+      <section id="register" className="py-32 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl md:text-4xl font-semibold text-foreground mb-4">
+              <h2 className="font-heading text-3xl md:text-4xl font-normal text-foreground mb-4">
                 Register for a Workshop
               </h2>
               <p className="text-muted-foreground">
@@ -151,7 +163,7 @@ const Workshops = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 p-8 rounded-3xl bg-background shadow-card">
+            <form onSubmit={handleSubmit} className="space-y-6 p-8 rounded-3xl bg-background ">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">

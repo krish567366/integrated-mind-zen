@@ -8,7 +8,12 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Workshops from "./pages/Workshops";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import AdminBlog from "./pages/AdminBlog";
 import Contact from "./pages/Contact";
+import WhyMeditation from "./pages/WhyMeditation";
+import HowLongMeditate from "./pages/HowLongMeditate";
+import PricingSchedule from "./pages/PricingSchedule";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,7 +29,12 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/workshops" element={<Workshops />} />
+          <Route path="/workshops/pricing-schedule" element={<PricingSchedule />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/admin/blog" element={<AdminBlog />} />
+          <Route path="/meditate/why-meditation" element={<WhyMeditation />} />
+          <Route path="/meditate/how-long-should-i-meditate" element={<HowLongMeditate />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

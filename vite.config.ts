@@ -8,6 +8,11 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    // Required for ngrok / Cursor port forwarding — Vite blocks unknown Host headers with 403
+    allowedHosts: true,
+  },
+  preview: {
+    allowedHosts: true,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {

@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Playfair Display", "serif"],
-        body: ["Nunito", "sans-serif"],
+        heading: ["Cormorant Garamond", "Georgia", "serif"],
+        body: ["Lato", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,22 +51,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sage: "hsl(var(--sage))",
-        forest: "hsl(var(--forest))",
-        sand: "hsl(var(--sand))",
-        lavender: "hsl(var(--lavender))",
-        gold: "hsl(var(--gold))",
+        clay: "hsl(var(--clay))",
+        blush: "hsl(var(--blush))",
         cream: "hsl(var(--cream))",
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
+        charcoal: "hsl(var(--charcoal))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -74,18 +62,18 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+        continuousMarquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+        softGlideUp: {
+          "0%": { opacity: "0", transform: "translateY(24px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        marquee: "continuousMarquee 55s linear infinite",
+        reveal: "softGlideUp 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards",
       },
     },
   },
