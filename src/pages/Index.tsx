@@ -12,7 +12,7 @@ import { EditorialPillLink } from "@/components/editorial/EditorialPillLink";
 import heroImage from "@/assets/hero.jpeg";
 import contemplativeImage from "@/assets/contemplative.jpeg";
 import pathImage from "@/assets/path.jpeg";
-import image3 from "@/assets/image3.webp";
+import article4Image from "@/assets/article4.jpeg";
 
 const Index = () => {
   return (
@@ -98,7 +98,7 @@ const Index = () => {
         </InsetWide>
       </EditorialSection>
 
-      <BleedImage src={image3} alt="" />
+      <BleedImage src={article4Image} alt="" />
 
       {/* ⑥ Pull quote */}
       <EditorialSection>
