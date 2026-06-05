@@ -7,13 +7,11 @@ export const Footer = () => {
     <footer className="border-t border-foreground/[0.06]">
       <EditorialSection tight>
         <InsetWide align="center" className="space-y-8">
-          <EditorialH2 center>
-            Reimagine. Reclaim. Rebirth. Unleash <em>Your</em> Light.
-          </EditorialH2>
+          <EditorialH2 center>Integrated Mind</EditorialH2>
           <p className="font-body text-[clamp(1rem,1.6vw,1.125rem)] font-light leading-[1.85] text-foreground/80 text-center max-w-2xl mx-auto">
-            For the past two decades, Vibhu has been supporting awakening seekers, heart-led leaders,
-            and modern-day mystics come home to the unique expression of who they are. To get started,
-            explore the programs and offers.
+            Understanding the patterns of the mind where suffering begins and clarity naturally emerges.
+            A thoughtful space for those who wish to understand themselves more deeply through awareness,
+            insight, and compassionate understanding.
           </p>
         </InsetWide>
       </EditorialSection>
@@ -22,14 +20,15 @@ export const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-8 border-t border-foreground/[0.06]">
           <div>
             <p className="font-body text-[0.6875rem] tracking-[0.18em] uppercase text-foreground mb-5">
-              Work With Vibhu
+              Explore
             </p>
             <ul className="space-y-3">
               {[
                 { label: "Home", path: "/" },
                 { label: "About", path: "/about" },
+                { label: "How I Work", path: "/how-i-work" },
                 { label: "All Services", path: "/services" },
-                { label: "Workshops", path: "/workshops" },
+                { label: "Sessions", path: "/sessions" },
               ].map((item) => (
                 <li key={item.path}>
                   <Link
@@ -48,7 +47,7 @@ export const Footer = () => {
             </p>
             <ul className="space-y-3">
               {[
-                { label: "Blog", path: "/blog" },
+                { label: "Articles", path: "/articles" },
                 { label: "Meditation", path: "/meditate/why-meditation" },
                 { label: "Contact", path: "/contact" },
               ].map((item) => (

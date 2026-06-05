@@ -1,5 +1,20 @@
 import { useState, useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
+import article1Image from "@/assets/article1.jpeg";
+import article2Image from "@/assets/article2.jpeg";
+import article3Image from "@/assets/article3.jpeg";
+import article4Image from "@/assets/article4.jpeg";
+import article5Image from "@/assets/article5.jpeg";
+import article6Image from "@/assets/article6.jpeg";
+
+const ARTICLE_IMAGES: Record<number, string> = {
+  1: article1Image,
+  2: article2Image,
+  3: article3Image,
+  4: article4Image,
+  5: article5Image,
+  6: article6Image,
+};
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -116,7 +131,10 @@ const AdminBlog = () => {
   useEffect(() => {
     const savedPosts = localStorage.getItem("blogPosts");
     if (savedPosts) {
-      setPosts(JSON.parse(savedPosts));
+      const posts = JSON.parse(savedPosts).map((post: BlogPost) =>
+        ARTICLE_IMAGES[post.id] ? { ...post, image: ARTICLE_IMAGES[post.id] } : post,
+      );
+      setPosts(posts);
     } else {
       // Initialize with default posts if none exist
       const defaultPosts = [
@@ -179,6 +197,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
           category: "Mindfulness",
           readTime: "10 min read",
           date: "Jan 12, 2026",
+          image: article1Image,
           published: true,
         },
         {
@@ -189,6 +208,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
           category: "Wellness",
           readTime: "5 min read",
           date: "Nov 25, 2024",
+          image: article2Image,
           published: true,
         },
         {
@@ -199,6 +219,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
           category: "Cognitive Science",
           readTime: "8 min read",
           date: "Nov 18, 2024",
+          image: article3Image,
           published: true,
         },
       ];
@@ -251,7 +272,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
     resetForm();
     toast({
       title: "Success",
-      description: "Blog post created successfully!",
+      description: "Article created successfully!",
     });
   };
 
@@ -292,7 +313,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
     resetForm();
     toast({
       title: "Success",
-      description: "Blog post updated successfully!",
+      description: "Article updated successfully!",
     });
   };
 
@@ -300,7 +321,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
     setPosts(posts.filter(post => post.id !== postId));
     toast({
       title: "Success",
-      description: "Blog post deleted successfully!",
+      description: "Article deleted successfully!",
     });
   };
 
@@ -318,10 +339,10 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-heading font-semibold text-foreground mb-2">
-              Blog Management
+              Article Management
             </h1>
             <p className="text-muted-foreground">
-              Create, edit, and manage your blog posts
+              Create, edit, and manage your articles
             </p>
           </div>
 
@@ -334,9 +355,9 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
             </DialogTrigger>
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
-                <DialogTitle>Create New Blog Post</DialogTitle>
+                <DialogTitle>Create New Article</DialogTitle>
                 <DialogDescription>
-                  Fill in the details for your new blog post.
+                  Fill in the details for your new article.
                 </DialogDescription>
               </DialogHeader>
 
@@ -347,7 +368,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
                     id="title"
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    placeholder="Enter blog post title"
+                    placeholder="Enter article title"
                   />
                 </div>
 
@@ -368,7 +389,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
                     id="content"
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                    placeholder="Full blog post content"
+                    placeholder="Full article content"
                     rows={10}
                   />
                 </div>
@@ -465,7 +486,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
                         disabled={!!selectedFile}
                       />
                       <p className="text-xs text-muted-foreground mt-1">
-                        Enter a URL for the blog post image
+                        Enter a URL for the article image
                       </p>
                     </div>
 
@@ -516,7 +537,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
           </Dialog>
         </div>
 
-        {/* Blog Posts List */}
+        {/* Articles List */}
         <div className="grid gap-6">
           {posts.map((post) => (
             <Card key={post.id}>
@@ -558,7 +579,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
                       </AlertDialogTrigger>
                       <AlertDialogContent>
                         <AlertDialogHeader>
-                          <AlertDialogTitle>Delete Blog Post</AlertDialogTitle>
+                          <AlertDialogTitle>Delete Article</AlertDialogTitle>
                           <AlertDialogDescription>
                             Are you sure you want to delete "{post.title}"? This action cannot be undone.
                           </AlertDialogDescription>
@@ -594,9 +615,9 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
         <Dialog open={!!editingPost} onOpenChange={() => setEditingPost(null)}>
           <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle>Edit Blog Post</DialogTitle>
+              <DialogTitle>Edit Article</DialogTitle>
               <DialogDescription>
-                Make changes to your blog post.
+                Make changes to your article.
               </DialogDescription>
             </DialogHeader>
 

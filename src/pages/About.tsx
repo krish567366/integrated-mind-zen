@@ -31,7 +31,7 @@ const values = [
 const About = () => {
   return (
     <Layout>
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="py-32 pt-40 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
@@ -39,37 +39,82 @@ const About = () => {
               Hi! I'm Vibhu.
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed animate-reveal delay-reveal-200">
-              It is my desire for you to experience wholeness and create peace inside and outside. 
-              I invite you to release whatever is blocking you and return to your aware, peaceful and integrated nature.
+              My work is rooted in contemplative inquiry and psychological exploration.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Philosophy Section */}
+      {/* Bio */}
       <section className="py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center space-y-6">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Whether you're struggling in relationships or seeking emotional balance, spiritual growth, happiness and inner peace. 
-              It is possible, and I'm so glad you're here!
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="relative lg:sticky lg:top-32">
+              <img
+                src={founderImg}
+                alt="Vibhu — Founder of Integrated Mind"
+                className="w-full max-w-md mx-auto rounded-3xl object-cover"
+              />
+            </div>
+
+            <div className="space-y-6">
+              <p className="text-muted-foreground leading-relaxed">
+                I founded Integrated Mind to share the science of inner transformation through a thoughtful
+                integration of Eastern psychotherapy, mindfulness, self-awareness practices, and emotional
+                healing. My work is informed by an extensive background in art, philosophy, brain science,
+                metacognitive behaviour, and contemplative practices for inner awakening. Over the past two
+                decades, I have trained in and practiced a wide range of therapeutic and meditative approaches,
+                allowing me to respond to life's challenges from a holistic and grounded perspective.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                At the heart of my work is the understanding that lasting change occurs when awareness,
+                emotional regulation, and compassionate inquiry come together. Meditation and mindfulness have
+                been central to my own journey and continue to be powerful tools in helping individuals move
+                beyond mental noise, reconnect with their essential self, and cultivate clarity, resilience, and
+                emotional balance. I have had the privilege of supporting individuals through personal crises,
+                life transitions, anxiety, relationship difficulties, and periods of emotional overwhelm,
+                guiding them toward greater self-understanding, healing, and wellbeing.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                If you find yourself feeling stuck, dissatisfied, emotionally drained, or disconnected from
+                yourself or others, integrated therapy can help gently uncover and transform unhelpful thought
+                patterns, unconscious beliefs, and emotional blocks that may be limiting your sense of
+                fulfilment. Alongside my work with private clients, I also facilitate workshops and group
+                learning experiences focusing on relationship awareness, mental wellbeing, emotional
+                intelligence, self-management, and mindfulness for sustainable balance. These sessions are
+                practical and reflective, grounded in evidence-based principles, and support people in
+                navigating both their personal lives and professional roles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Reflection */}
+      <section className="py-32 bg-secondary/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <p className="text-lg text-muted-foreground leading-relaxed text-center">
+              I have come to see pain and difficulty not as failures, but as invitations — moments that ask us
+              to pause, listen more deeply, and release what no longer serves us.
             </p>
-            <p className="text-muted-foreground leading-relaxed">
-              I founded Integrated Mind to share the science of inner transformation through a unique fusion of Eastern psychotherapy, 
-              self-awareness techniques, and emotional healing practices. My journey is grounded in an extensive background in art, 
-              philosophy, brain science, metacognitive behavior, and sacred practices for inner awakening.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Over the past two decades, I have practiced and trained in various therapeutic techniques and meditative therapies, 
-              which has allowed me to respond to a wide range of challenges from a holistic perspective. I have found meditation 
-              to be one of the most profound ways to live a joyful and fulfilled life.
+            <blockquote className="text-foreground italic border-l-4 border-primary pl-6 py-4 bg-background/50 rounded-r-lg">
+              "Although the world is full of suffering, it is also full of the overcoming of it."
+              <span className="text-sm text-muted-foreground mt-2 block">— Helen Keller</span>
+            </blockquote>
+            <blockquote className="text-foreground italic border-l-4 border-primary pl-6 py-4 bg-background/50 rounded-r-lg">
+              "Your pain is the breaking of the shell that encloses your understanding."
+              <span className="text-sm text-muted-foreground mt-2 block">— Kahlil Gibran</span>
+            </blockquote>
+            <p className="text-muted-foreground leading-relaxed text-center">
+              When met with awareness and care, even our struggles can guide us back to our authentic self.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-32 bg-secondary/30">
+      {/* Values */}
+      <section className="py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-heading text-3xl md:text-4xl font-normal text-foreground mb-4">
@@ -99,74 +144,26 @@ const About = () => {
         </div>
       </section>
 
-      {/* Founder Section */}
+      {/* Join Me */}
       <section className="py-32 bg-secondary/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <img
-                src={founderImg}
-                alt="Vibhu - Founder of Integrated Mind"
-                className="w-full max-w-md mx-auto rounded-3xl  object-cover"
-              />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-secondary/50 " />
-            </div>
-
-            <div className="space-y-6">
-              <h2 className="font-heading text-3xl md:text-4xl font-normal text-foreground">
-                My Journey of Healing & Transformation
-              </h2>
-              <p className="text-muted-foreground leading-relaxed">
-                By letting go of the chaos of the mind and reconnecting with the essential self, we can experience true peace and healing. 
-                I have had the privilege of supporting individuals through personal crises and life challenges, guiding them toward clarity, 
-                healing, and a deeper sense of well-being.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                If you find yourself dissatisfied with where you are in life, know that integrated therapy can help uncover and heal 
-                negative thought patterns, unconscious beliefs, and unfulfilled desires that may be standing in the way of your happiness.
-              </p>
-              <blockquote className="text-foreground italic border-l-4 border-primary pl-6 py-4 my-6 bg-background/50 rounded-r-lg">
-                "Although the world is full of suffering, it is also full of the overcoming of it." 
-                <br /><span className="text-sm text-muted-foreground mt-2 block">— Helen Keller</span>
-              </blockquote>
-              <p className="text-muted-foreground leading-relaxed">
-                I have come to believe that pain and suffering serve as invitations to awaken, release illusions, and open the door to freedom. 
-                In these moments of struggle, we catch a glimpse of the truth that can guide us toward our authentic self.
-              </p>
-              <blockquote className="text-foreground italic border-l-4 border-primary pl-6 py-4 my-6 bg-background/50 rounded-r-lg">
-                "Your pain is the breaking of the shell that encloses your understanding."
-                <br /><span className="text-sm text-muted-foreground mt-2 block">— Kahlil Gibran</span>
-              </blockquote>
-              <Button variant="hero" size="lg" asChild>
-                <Link to="/contact" className="gap-2">
-                  Join Me on This Journey
-                  <ArrowRight size={18} />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Invitation Section */}
-      <section className="py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="font-heading text-3xl md:text-4xl font-normal text-foreground">
-              Join Me on a Journey of Transformation
+              Join Me
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              The journey of self-discovery and healing is a gentle pilgrimage that begins with a single step. 
-              If you feel ready to release the burdens that weigh on you, explore the deeper aspects of your being, 
-              and embrace meaningful transformation, I welcome you to join me on this path.
+              The journey of self-discovery and healing is a gentle pilgrimage — one that begins with a
+              single step. If you feel ready to release what weighs on you, deepen your self-understanding,
+              and move toward a more grounded and fulfilled way of living, I welcome you to walk this path
+              with me.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Together, we can uncover the way to healing, peace, and a more fulfilled life.
+              Together, we can explore what supports healing, clarity, and lasting inner peace.
             </p>
             <div className="pt-6">
               <Button variant="hero" size="xl" asChild>
                 <Link to="/contact" className="gap-2">
-                  Begin Your Journey Today
+                  Join Me
                   <ArrowRight size={20} />
                 </Link>
               </Button>

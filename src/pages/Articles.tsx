@@ -3,9 +3,27 @@ import { Layout } from "@/components/layout/Layout";
 import { Newsletter } from "@/components/Newsletter";
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock } from "lucide-react";
+import article1Image from "@/assets/article1.jpeg";
+import article2Image from "@/assets/article2.jpeg";
+import article3Image from "@/assets/article3.jpeg";
+import article4Image from "@/assets/article4.jpeg";
+import article5Image from "@/assets/article5.jpeg";
+import article6Image from "@/assets/article6.jpeg";
 import blog1 from "@/assets/blog1.webp";
-import blog2 from "@/assets/blog2.webp";
-import blog3 from "@/assets/blog3.webp";
+
+const ARTICLE_IMAGES: Record<number, string> = {
+  1: article1Image,
+  2: article2Image,
+  3: article3Image,
+  4: article4Image,
+  5: article5Image,
+  6: article6Image,
+};
+
+const applyFeaturedImage = (posts: BlogPost[]) =>
+  posts.map((post) =>
+    ARTICLE_IMAGES[post.id] ? { ...post, image: ARTICLE_IMAGES[post.id] } : post,
+  );
 
 interface BlogPost {
   id: number;
@@ -19,15 +37,14 @@ interface BlogPost {
   published: boolean;
 }
 
-const Blog = () => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+const Articles = () => {
+  const [articles, setArticles] = useState<BlogPost[]>([]);
 
   useEffect(() => {
     const savedPosts = localStorage.getItem("blogPosts");
     if (savedPosts) {
-      const posts = JSON.parse(savedPosts);
-      // Only show published posts
-      setBlogPosts(posts.filter((post: BlogPost) => post.published));
+      const posts = applyFeaturedImage(JSON.parse(savedPosts));
+      setArticles(posts.filter((post: BlogPost) => post.published));
     } else {
       // Fallback to default posts if none exist
       const defaultPosts = [
@@ -90,7 +107,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
           category: "Mindfulness",
           readTime: "10 min read",
           date: "Jan 12, 2026",
-          image: blog1,
+          image: article1Image,
           published: true,
         },
         {
@@ -101,7 +118,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
           category: "Wellness",
           readTime: "5 min read",
           date: "Nov 25, 2024",
-          image: blog2,
+          image: article2Image,
           published: true,
         },
         {
@@ -112,7 +129,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
           category: "Cognitive Science",
           readTime: "8 min read",
           date: "Nov 18, 2024",
-          image: blog3,
+          image: article3Image,
           published: true,
         },
         {
@@ -123,7 +140,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
           category: "Self-Care",
           readTime: "6 min read",
           date: "Nov 10, 2024",
-          image: blog1,
+          image: article4Image,
           published: true,
         },
         {
@@ -134,7 +151,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
           category: "Meditation",
           readTime: "5 min read",
           date: "Nov 3, 2024",
-          image: blog2,
+          image: article5Image,
           published: true,
         },
         {
@@ -145,11 +162,11 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
           category: "Lifestyle",
           readTime: "6 min read",
           date: "Oct 27, 2024",
-          image: blog3,
+          image: article6Image,
           published: true,
         },
       ];
-      setBlogPosts(defaultPosts);
+      setArticles(defaultPosts);
       localStorage.setItem("blogPosts", JSON.stringify(defaultPosts));
     }
   }, []);
@@ -160,7 +177,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-heading text-4xl md:text-5xl font-light tracking-wide text-foreground mb-6 animate-reveal">
-              Mindful Insights
+              Articles
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed animate-reveal delay-reveal-200">
               Explore articles on mindfulness, meditation, cognitive science, and holistic wellness. 
@@ -170,11 +187,11 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
         </div>
       </section>
 
-      {/* Blog Grid */}
+      {/* Articles Grid */}
       <section className="py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {articles.map((post) => (
               <article
                 key={post.id}
                 className="group rounded-3xl bg-secondary/30 border border-foreground/10 transition-opacity duration-500 overflow-hidden"
@@ -205,7 +222,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
                   <div className="flex items-center justify-between">
                     <span className="text-muted-foreground text-xs">{post.date}</span>
                     <Link
-                      to={`/blog/${post.id}`}
+                      to={`/articles/${post.id}`}
                       className="flex items-center gap-1 text-primary text-sm font-medium hover:gap-2 transition-all duration-500 ease-in-out"
                     >
                       Read More
@@ -248,4 +265,4 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
   );
 };
 
-export default Blog;
+export default Articles;

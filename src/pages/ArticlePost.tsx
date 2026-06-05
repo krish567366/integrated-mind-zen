@@ -4,9 +4,26 @@ import { Layout } from "@/components/layout/Layout";
 import { Newsletter } from "@/components/Newsletter";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
-import blog1 from "@/assets/blog1.webp";
-import blog2 from "@/assets/blog2.webp";
-import blog3 from "@/assets/blog3.webp";
+import article1Image from "@/assets/article1.jpeg";
+import article2Image from "@/assets/article2.jpeg";
+import article3Image from "@/assets/article3.jpeg";
+import article4Image from "@/assets/article4.jpeg";
+import article5Image from "@/assets/article5.jpeg";
+import article6Image from "@/assets/article6.jpeg";
+
+const ARTICLE_IMAGES: Record<number, string> = {
+  1: article1Image,
+  2: article2Image,
+  3: article3Image,
+  4: article4Image,
+  5: article5Image,
+  6: article6Image,
+};
+
+const applyFeaturedImage = (posts: BlogPost[]) =>
+  posts.map((post) =>
+    ARTICLE_IMAGES[post.id] ? { ...post, image: ARTICLE_IMAGES[post.id] } : post,
+  );
 
 interface BlogPost {
   id: number;
@@ -20,7 +37,7 @@ interface BlogPost {
   published: boolean;
 }
 
-const BlogPost = () => {
+const ArticlePost = () => {
   const { id } = useParams<{ id: string }>();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
@@ -29,7 +46,7 @@ const BlogPost = () => {
     const loadPost = () => {
       const savedPosts = localStorage.getItem("blogPosts");
       if (savedPosts) {
-        const posts = JSON.parse(savedPosts);
+        const posts = applyFeaturedImage(JSON.parse(savedPosts));
         const foundPost = posts.find((p: BlogPost) => p.id === parseInt(id || "0"));
         if (foundPost && foundPost.published) {
           setPost(foundPost);
@@ -96,7 +113,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
             category: "Mindfulness",
             readTime: "10 min read",
             date: "Jan 12, 2026",
-            image: blog1,
+            image: article1Image,
             published: true,
           },
           {
@@ -107,7 +124,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
             category: "Wellness",
             readTime: "5 min read",
             date: "Nov 25, 2024",
-            image: blog2,
+            image: article2Image,
             published: true,
           },
           {
@@ -118,7 +135,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
             category: "Cognitive Science",
             readTime: "8 min read",
             date: "Nov 18, 2024",
-            image: blog3,
+            image: article3Image,
             published: true,
           },
         ];
@@ -154,7 +171,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
             <h1 className="text-2xl font-bold text-foreground mb-4">Article Not Found</h1>
             <p className="text-muted-foreground mb-6">The article you're looking for doesn't exist or has been removed.</p>
             <Button asChild>
-              <Link to="/blog">Back to Blog</Link>
+              <Link to="/articles">Back to Articles</Link>
             </Button>
           </div>
         </div>
@@ -169,9 +186,9 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <Button variant="ghost" asChild className="mb-6">
-              <Link to="/blog" className="flex items-center gap-2">
+              <Link to="/articles" className="flex items-center gap-2">
                 <ArrowLeft className="w-4 h-4" />
-                Back to Blog
+                Back to Articles
               </Link>
             </Button>
 
@@ -234,7 +251,7 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
                   </p>
                 </div>
                 <Button asChild>
-                  <Link to="/blog">Read More Articles</Link>
+                  <Link to="/articles">Read More Articles</Link>
                 </Button>
               </div>
             </div>
@@ -247,4 +264,4 @@ It does not mean being emotionless, rather, the quality of not being disturbed m
   );
 };
 
-export default BlogPost;
+export default ArticlePost;

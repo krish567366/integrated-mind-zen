@@ -309,7 +309,7 @@ const PricingSchedule = () => {
           <div className="mt-16 text-center">
             <Button variant="hero" size="xl" asChild>
               <Link to="/contact" className="gap-2">
-                Register for Workshops
+                Register for Sessions
                 <ArrowRight size={20} />
               </Link>
             </Button>

@@ -1,22 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLeft = [
   { name: "About", path: "/about" },
+  { name: "How I Work", path: "/how-i-work" },
   { name: "Services", path: "/services" },
-  { name: "Workshops", path: "/workshops" },
+  { name: "Sessions", path: "/sessions" },
 ];
 
 const navRight = [
-  { name: "Blog", path: "/blog" },
+  { name: "Articles", path: "/articles" },
   { name: "Contact", path: "/contact" },
 ];
+
+const navLinks = [...navLeft, ...navRight];
 
 export const Navbar = ({ overlay = false }: { overlay?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   const linkClass = (path: string) =>
     cn(
@@ -32,19 +46,31 @@ export const Navbar = ({ overlay = false }: { overlay?: boolean }) => {
       )}
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="relative flex h-[4.5rem] md:h-20 items-center justify-between">
-          {/* Mobile menu */}
+        {/* Mobile header */}
+        <div className="relative z-[60] grid grid-cols-3 items-center h-[4.5rem] md:hidden">
           <button
             type="button"
-            className="md:hidden p-1 text-foreground/70"
-            onClick={() => setIsOpen(!isOpen)}
+            className="justify-self-start p-2 -ml-2 text-foreground/70"
+            onClick={() => setIsOpen((open) => !open)}
+            aria-expanded={isOpen}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
-            {isOpen ? <X size={20} strokeWidth={1.25} /> : <Menu size={20} strokeWidth={1.25} />}
+            {isOpen ? <X size={22} strokeWidth={1.25} /> : <Menu size={22} strokeWidth={1.25} />}
           </button>
 
-          {/* Desktop left nav */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10 flex-1">
+          <Link
+            to="/"
+            className="justify-self-center font-heading text-[1.05rem] font-normal text-foreground whitespace-nowrap transition-opacity duration-500 hover:opacity-60"
+          >
+            Integrated Mind
+          </Link>
+
+          <div className="justify-self-end w-9" aria-hidden="true" />
+        </div>
+
+        {/* Desktop header */}
+        <div className="relative hidden md:flex h-20 items-center justify-between">
+          <nav className="flex items-center gap-8 lg:gap-10 flex-1">
             {navLeft.map((link) => (
               <Link key={link.path} to={link.path} className={linkClass(link.path)}>
                 {link.name}
@@ -52,36 +78,40 @@ export const Navbar = ({ overlay = false }: { overlay?: boolean }) => {
             ))}
           </nav>
 
-          {/* Center logo — absolutely centered */}
           <Link
             to="/"
-            className="absolute left-1/2 -translate-x-1/2 font-heading text-[1.05rem] md:text-lg font-normal text-foreground whitespace-nowrap transition-opacity duration-500 hover:opacity-60"
+            className="absolute left-1/2 -translate-x-1/2 font-heading text-lg font-normal text-foreground whitespace-nowrap transition-opacity duration-500 hover:opacity-60"
           >
             Integrated Mind
           </Link>
 
-          {/* Desktop right nav */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10 flex-1 justify-end">
+          <nav className="flex items-center gap-8 lg:gap-10 flex-1 justify-end">
             {navRight.map((link) => (
               <Link key={link.path} to={link.path} className={linkClass(link.path)}>
                 {link.name}
               </Link>
             ))}
           </nav>
-
-          <div className="md:hidden w-5" aria-hidden="true" />
         </div>
       </div>
 
-      {/* Mobile fullscreen menu */}
+      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 top-[4.5rem] bg-background z-40 flex flex-col items-center justify-center gap-10">
-          {[...navLeft, ...navRight].map((link) => (
+        <div
+          className="md:hidden fixed inset-0 top-[4.5rem] z-[55] bg-background flex flex-col items-center justify-center gap-8 px-6 overflow-y-auto overscroll-contain"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+        >
+          {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
               onClick={() => setIsOpen(false)}
-              className="font-heading text-2xl font-normal text-foreground/80 hover:opacity-60 transition-opacity"
+              className={cn(
+                "font-heading text-2xl font-normal py-2 transition-opacity hover:opacity-60",
+                location.pathname === link.path ? "text-foreground" : "text-foreground/80",
+              )}
             >
               {link.name}
             </Link>
